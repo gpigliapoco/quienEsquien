@@ -1,0 +1,113 @@
+body{
+		
+	background-image: url("http://i.stack.imgur.com/jGlzr.png");
+
+}
+header{
+	width: 5px;
+}
+section{
+	float: right;
+
+}
+aside{
+	float: left;
+	width: 100px;
+}
+
+#titulo{
+	text-align: center;
+	font-size: 20px;
+	
+}
+
+#tablero{
+
+	text-align: center;
+	width: 50%;
+	
+}
+
+th{
+	font-size: 30px;
+	color: red;
+}
+
+.fotos{
+	font-family:Lucida Console;
+	border: solid 10px;
+	border-radius: 15px;
+	margin: 100px;
+
+	
+
+}
+#tabla{
+	border-spacing: 20px;
+	margin-right:100px;
+}
+
+#oculto,#comienzo,#botonera,#descripcion,#botonera1 {
+	margin: 15px;
+	text-align: center;
+}
+
+#oculto{
+	border: solid 10px;
+	border-radius: 15px;
+	width: 130px;
+	text-align: center;
+	margin-left: 250px;
+}
+#descripcion{
+	width: 500px;
+	text-align: left;
+}
+#point {
+	margin-left: 15px;
+}
+
+
+p{
+	font-family:Lucida Console;
+	font-size: 20px;
+
+}
+
+
+.b {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+	background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+	background-color:#d0451b;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:8px 30px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+
+}
+
+.title{
+	font-family:Lucida Console;
+	font-size: 25px;
+	text-align: right;
+
+}
+#finaly,#who {
+	opacity: 0;
+}

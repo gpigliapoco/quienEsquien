@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>	
+<link rel="stylesheet" type="text/css" href="quienesquien 2.css">	
+<script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript">
+
+var contador = 3	
+var jugador = 0
+var personas = [	
+	["javier",30,"pelado","hombre","flaco","https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/47555_1329324487104_6742014_n.jpg?oh=27ef6aedb526a1da26e58df586e71d06&oe=55F9E8F2&__gda__=1441892523_3b8b7c04d896c207f7be57d10e645242",true],
+	["gerardo",56,"pelado","hombre","gordo","https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/47325_1329325527130_5177342_n.jpg?oh=0595a763823c2c589a0c2d5c2a8a6ea9&oe=55FC23E1&__gda__=1446275267_9aee8b89551d623bd316c25e7e1d8ca5",true],
+	["pablo",51,"pelado","hombre","gordo","https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/1917665_1179300809590_4749212_n.jpg?oh=308ba89b197d2f409792657e22d16476&oe=5607629D&__gda__=1441308054_888c4446958019af8a622be4542c86c5",true],
+	["leo",32,"corto","hombre","flaco","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/402378_10150566917383823_1251428726_n.jpg?oh=1fb26ca5d3fca021f7f5e11965440243&oe=55EA6462",true],
+	["claudia",52,"largo","mujer","gordo","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/46536_1332960418000_2020154_n.jpg?oh=034895e8c08f9148cf7b81d47210893d&oe=55F6B3A3",true],
+	["cristian",27,"corto","hombre","flaco","https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/1001518_10151636001073267_950404653_n.jpg?oh=18ff3c70977e7088c20ee6484c95a9ae&oe=55ED79A2&__gda__=1446302125_9c84d1f385d426fe6f1c83a995f4b29b",true],
+	["diego",41,"corto","hombre","flaco","http://pulsosocial.com/wp-content/uploads/2014/08/250x188xBRTky-linea.jpg.pagespeed.ic_.7JmjCSKf83.jpg",true],
+	["miguel",35,"corto","hombre","flaco","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10303178_10203735889176184_2349014370031939241_n.jpg?oh=eac5c0d7bf4df8abc6df56407e43eeed&oe=55EF5E1A",true],
+	["agustin",20,"corto","hombre","flaco","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/480615_4449140231688_408324335_n.jpg?oh=d34dc51ec30018ea420262cd52b1b08d&oe=563484A3",true],
+	["carmen",82,"largo","mujer","flaco","https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/40148_1657212035228_6256085_n.jpg?oh=b49c493f3e97dda4c456829c638b473b&oe=55FA3FE1&__gda__=1441395999_6c358425fa53f71ca02d476c2efef8cb",true],
+	["ceci",29,"largo","mujer","flaco","https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/2262_1092641520216_1199_n.jpg?oh=dca70e5be4c7cceeb86a0f5abc062e33&oe=56035E91&__gda__=1443194278_afe214d1fd16ef710658e5ff35bc9a0f",true],
+	["ojeda",21,"corto","hombre","flaco","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/2234_1095852718054_1580_n.jpg?oh=78d2b49f9d1d9e6a7e1e6bd51d6b547f&oe=55FD3C76",true],
+	["paola",30,"largo","mujer","flaco","https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/421601_3280355776695_512834010_n.jpg?oh=6632d1a853a18a94c9673c73638051e6&oe=55F0A4F7&__gda__=1441988304_95f269ed086a8480bbc1cd145fa1288a",true],
+	["sosa",51,"corto","hombre","gordo","https://scontent-mia1-1.xx.fbcdn.net/hphotos-xap1/v/l/t1.0-9/10922731_798130346926097_6772125808283877771_n.jpg?oh=b803ffcf23b507c3d5352eafbd4818f8&oe=55FF01AC",true],
+	["naila",19,"largo","mujer","flaco","https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/1618424_10202484036575073_1859888427_n.jpg?oh=4b12a9ed36cc04ee428fdfc44e0f7919&oe=55F2353A&__gda__=1441509008_47e727f299f472fa2d0cc7bb8121cbce",true]
+	];
+
+
+
+var compu = ia
+var compus
+var cambio = personas.length
+
+var resp_final = document.getElementById('who').value
+
+function cuenta () {
+	var ia = parseInt(Math.random()*personas.length)
+	compu = ia
+	compus = personas[ia]
+	//document.getElementById('name').innerHTML = compus[0]
+	mostrar()
+	eleccion()
+	
+}
+////////////////////hombre//////////
+
+function hombre () {
+
+x = personas.length-1
+if (compus[3] == "mujer") {
+	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+}else {jugador ++}
+while (x >= 0) {
+	if (compus[3] == "mujer"){
+	
+		document.getElementById('boton1').style.visibility = "hidden";
+		}
+     	else if (compus[3] != personas[x][3] )
+	   	{
+			personas[x][6] = false
+						
+	  	 }
+			else  {
+        	document.getElementById('sex').innerHTML = "Es un hombre"
+	   	};
+		x--
+			if (x==0) {document.getElementById('boton1').style.visibility = "hidden";};
+		}
+
+mostrar()
+aparece()
+
+}    
+
+
+/////////////////////////mujer //////////////
+
+
+function mujer () {
+
+x = personas.length-1
+if (compus[3] == "hombre") {
+	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+}else {jugador ++}
+while (x >= 0) {
+	if (compus[3] == "hombre"){
+		document.getElementById('boton2').style.visibility = "hidden";
+		}
+   else  if (compus[3] != personas[x][3] )
+	   {
+		
+		personas[x][6] = false
+		
+	   }
+	else  {
+        document.getElementById('sex').innerHTML = "Es una mujer"
+	   };
+	x--
+	if (x==0) {document.getElementById('boton2').style.visibility = "hidden";}
+	}
+	
+	mostrar()
+	aparece()
+}    
+
+
+//////////////////////entre 31 y 40 //////////////////
+
+
+function edad () {
+	
+x = personas.length-1
+if ((compus[1] < 30) || (compus[1] > 40))
+	   {
+     	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+       	}else {jugador ++}	
+
+if ((compus[1] > 30) && (compus[1] < 40))
+   {
+ 	document.getElementById('age').innerHTML = "Tiene entre 30 y 40"
+   }
+
+   
+while ((x >= 0) && ((compus[1] > 30) && (compus[1] < 40))) {
+    if ((personas[x][1] < 30) || (personas[x][1] > 40))
+	   {
+        personas[x][6] = false
+       	}	
+	x--
+    }
+
+document.getElementById('boton3').style.visibility = "hidden"    
+mostrar()
+aparece()
+}    
+ 
+
+///////////////////menor de 30 ////////
+
+
+function edad1 () {
+x = personas.length-1
+if ((compus[1] < 15) || (compus[1] > 30))
+	   {
+         	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+       	}else {jugador ++}
+if ((compus[1] > 15) && (compus[1] <= 30))
+   {
+ 	document.getElementById('age').innerHTML = "Tiene entre 15 y 30"
+   }
+   
+while ((x >= 0) && ((compus[1] > 15) && (compus[1] <= 30))) {
+    if ((personas[x][1] < 15) || (personas[x][1] > 30))
+	   {
+        personas[x][6] = false
+       	}	
+	x--
+    }
+document.getElementById('boton4').style.visibility = "hidden"    
+mostrar()
+aparece()
+}    
+ 
+
+////////// mayor de 50 /////////////////
+
+function edad2 () {
+x = personas.length-1
+compu 
+if (compus[1] < 51 )
+	   {
+		contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador		
+	   }else {jugador ++}
+while (x >= 0) {
+	if (compus[1] < 51){
+		document.getElementById('boton5').style.visibility = "hidden";
+		}
+    else if (personas[x][1] < 51 )
+	   {
+		personas[x][6] = false
+		
+	   }
+	else {
+       document.getElementById('age').innerHTML = "Es mayor a 50"
+	   };
+	x--
+	if (x==0) {document.getElementById('boton5').style.visibility = "hidden";};
+    }
+mostrar()
+aparece()
+}    
+
+/////////////////// entre 40 y 50 ////////////
+
+function edad3 () {
+x = personas.length-1
+if ((compus[1] < 41) || (compus[1] > 50))
+	   {
+        contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+       	}else {jugador ++}	
+if ((compus[1] > 40) && (compus[1] < 51))
+   {
+ 	document.getElementById('age').innerHTML = "Tiene entre 41 y 50"
+   }
+while ((x >= 0) && ((compus[1] > 40) && (compus[1] < 51))) {
+    if ((personas[x][1] < 41) || (personas[x][1] > 50))
+	   {
+        personas[x][6] = false
+       	}	
+	x--
+    }
+document.getElementById('boton6').style.visibility = "hidden"    
+mostrar()
+aparece()
+}    
+
+
+
+////////////////////////////////////
+function gordo () {
+	
+x = personas.length-1
+if (compus[4] == "flaco") {
+	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+}else {jugador ++}
+while (x >= 0) {
+	if (compus[4] == "flaco"){
+		document.getElementById('boton7').style.visibility = "hidden";
+		}
+     	else if (compus[4] != personas[x][4] )
+	   	{
+			
+			personas[x][6] = false
+			//personas.splice(x,1)  se usa para borrar un elemento del array
+			
+	  	 }
+			else  {
+        	document.getElementById('fisico').innerHTML = "Es gordo"
+	   	};
+		x--
+			if (x==0) {document.getElementById('boton7').style.visibility = "hidden";};
+		}
+
+mostrar()
+aparece()
+}  
+
+
+///////////////////////////////
+function flaco () {
+	
+x = personas.length-1
+if (compus[4] == "gordo") {
+	contador--
+document.getElementById('point').innerHTML ="Vidas : "+ contador
+}else {jugador ++}
+while (x >= 0) {
+	if (compus[4] == "gordo"){
+		document.getElementById('boton8').style.visibility = "hidden";
+		}
+     	else if (compus[4] != personas[x][4] )
+	   	{
+			personas[x][6] = false
+			
+			
+	  	 }
+			else  {
+        	document.getElementById('fisico').innerHTML = "Es flaco"
+	   	};
+		x--
+			if (x==0) {document.getElementById('boton8').style.visibility = "hidden";};
+		}
+mostrar()
+aparece()
+}    
+
+function mostrar (){
+	x=personas.length
+	if(personas[0][6]){document.getElementById('imagen1').src = personas[0][5]}
+		else{document.getElementById('imagen1').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[1][6]){document.getElementById('imagen2').src = personas[1][5]}
+		else{document.getElementById('imagen2').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[2][6]){document.getElementById('imagen3').src = personas[2][5]}
+		else{document.getElementById('imagen3').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[3][6]){document.getElementById('imagen4').src = personas[3][5]}
+		else{document.getElementById('imagen4').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[4][6]){document.getElementById('imagen5').src = personas[4][5]}
+		else{document.getElementById('imagen5').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[5][6]){document.getElementById('imagen6').src = personas[5][5]}
+		else{document.getElementById('imagen6').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[6][6]){document.getElementById('imagen7').src = personas[6][5]}
+		else{document.getElementById('imagen7').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[7][6]){document.getElementById('imagen8').src = personas[7][5]}
+		else{document.getElementById('imagen8').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[8][6]){document.getElementById('imagen9').src = personas[8][5]}
+		else{document.getElementById('imagen9').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[9][6]){document.getElementById('imagen10').src = personas[9][5]}
+		else{document.getElementById('imagen10').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[10][6]){document.getElementById('imagen11').src = personas[10][5]}
+		else{document.getElementById('imagen11').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[11][6]){document.getElementById('imagen12').src = personas[11][5]}
+		else{document.getElementById('imagen12').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[12][6]){document.getElementById('imagen13').src = personas[12][5]}
+		else{document.getElementById('imagen13').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[13][6]){document.getElementById('imagen14').src = personas[13][5]}
+		else{document.getElementById('imagen14').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+	if(personas[14][6]){document.getElementById('imagen15').src = personas[14][5]}
+		else{document.getElementById('imagen15').src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/788px-Red_card.svg.png"}
+			
+	
+	
+}
+
+
+ // function eleccion () {
+ // 	if (true) {
+ // 		document.getElementById('imagen_compus').src = compus[5]
+ // 	};
+ // }
+
+function aparece () {
+	if ((contador == 0 ) || (jugador == 3))  {
+		document.getElementById("finaly").style.opacity = "1"
+		document.getElementById("who").style.opacity = "1"
+		document.getElementById('boton8').style.visibility = "hidden";
+		document.getElementById('boton7').style.visibility = "hidden";
+		document.getElementById('boton6').style.visibility = "hidden";
+		document.getElementById('boton5').style.visibility = "hidden";
+		document.getElementById('boton4').style.visibility = "hidden";
+		document.getElementById('boton3').style.visibility = "hidden";
+		document.getElementById('boton2').style.visibility = "hidden";
+		document.getElementById('boton1').style.visibility = "hidden";
+		
+		
+
+	};
+	
+}
+function ok () {
+	resp_final = document.getElementById('who').value
+	if (compus[0] === resp_final) {
+		document.getElementById('imagen_compus').src = compus[5]
+		alert("ganaste")
+		alert(jugador)
+	}else{
+		document.getElementById('imagen_compus').src = compus[5]
+		alert("perdiste era : "+ compus[0])
+		alert(jugador)
+	}
+
+}
+
+
+
+
+</script>
+
+
+
+</head>
+<body>
+<header></header>
+<div id="titulo">
+	<h1><img src="http://linoit.com/entry/image/4047626" width="120" height="132" alt="">Descubre quien es ?<img src="http://linoit.com/entry/image/4047626" width="120" height="132" alt=""></h1>
+</div>
+
+</header>
+<nav>
+	<p id="point" >Vidas : 3 </p>
+</nav>
+<section>
+	
+
+<div id="tablero" class="izquierda">
+<table id="tabla">
+	
+	<thead>
+		<tr>
+			<th colspan="5">Personajes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="fotos"><img src=""   id="imagen1" alt="" width="120" height="132"><br>javier</td>
+			<td class="fotos"><img src=""   id="imagen3" alt="" width="120" height="132"><br>pablo</td>
+			<td class="fotos"><img src=""   id="imagen2" alt="" width="120" height="132"><br>gerardo</td>
+			<td class="fotos"><img src=""   id="imagen4" alt="" width="120" height="132"><br>leo</td>
+			<td class="fotos"><img src=""   id="imagen5" alt="" width="120" height="132"><br>claudia</td>
+		</tr>
+		<tr>
+			<td class="fotos"><img src=""   id="imagen7" alt="" width="120" height="132"><br>diego</td>
+			<td class="fotos"><img src=""   id="imagen8" alt="" width="120" height="132"><br>miguel</td>
+			<td class="fotos"><img src=""   id="imagen9" alt="" width="120" height="132"><br>agustin</td>
+			<td class="fotos"><img src=""   id="imagen6" alt="" width="120" height="132"><br>cristian</td>
+			<td class="fotos"><img src=""   id="imagen10" alt="" width="120" height="132"><br>carmen</td>
+		</tr>
+		<tr>
+			<td class="fotos"><img src=""   id="imagen11" alt="" width="120" height="132"><br>ceci</td>
+			<td class="fotos"><img src=""   id="imagen12" alt="" width="120" height="132"><br>ojeda</td>
+			<td class="fotos"><img src=""   id="imagen13" alt="" width="120" height="132"><br>paola</td>
+			<td class="fotos"><img src=""   id="imagen14" alt="" width="120" height="132"><br>sosa</td>
+			<td class="fotos"><img src=""   id="imagen15" alt="" width="120" height="132"><br>naila</td>
+		</tr>
+		</tbody>
+	</tbody>
+</table>
+</div>
+</section>
+
+<aside>
+	
+
+<div id="botonera" class="derecha">
+<table>
+	<thead>
+		<tr>
+			<th colspan="3">Preguntas</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="title">sexo</td>
+			<td><input type="button" onclick="hombre()" class="b" id="boton1" value="hombre"></td>
+			<td><input type="button" onclick="mujer()" class="b"  id="boton2" value="mujer"></td>
+		</tr>
+		<tr>
+			<td class="title">fisico</td>
+			<td><input type="button" onclick="gordo()" class="b" id="boton7" value="gordo"></td>
+			<td><input type="button" onclick="flaco()" class="b" id="boton8" value="flaco"></td>
+		</tr>
+		<tr>
+			<td class="title">edad</td>
+			<td><input type="button" onclick="edad1()" class="b" id="boton4" value="Entre 1 a 30"></td>
+			<td><input type="button" onclick="edad()" class="b" id="boton3" value="Entre 31 a 40"></td>
+		</tr>
+		<tr>			
+			<td class="title">    </td>
+			<td><input type="button" onclick="edad3()" class="b" id="boton6" value="Entre 41 y 50"></td>
+			<td><input type="button" onclick="edad2()" class="b" id="boton5" value="Mas de 50"></td>
+			</tr>
+
+	</tbody>
+</table>
+
+
+
+</div>
+<div id="botonera1" class="derecha">
+<table>
+	<tbody>
+		<tr>
+			<td class="title">Opciones</td>
+			<td><input type="button" onclick="location.reload()" class="b" value="Jugar Otra Vez"></td>
+			<td><input type="button" onclick="cuenta()" id="comenzar" class="b" value="Comenzar"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+
+<div id="oculto" class="derecha">
+	<img src="" id="imagen_compus" width="120" height="132" alt="">
+	
+</div>
+
+ <div id="descripcion" class="derecha">
+	<h1>Descripcion Del Perosanaje</h1>
+	<p id="name"></p>
+	<p id="sex"></p>
+	<p id="age"></p>
+	<p id="fisico"></p>
+	<p id="finaly">Quien soy <input type="text" id="who" value="" placeholder=""><input type="button" onclick="ok()" class="b" value="?"></p>
+</div> 
+</aside>
+
+
+</body>
+</html>
